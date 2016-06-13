@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>Hello, {{ form.title.data }}</h1>
+
+    <img src="data:image/png;base64, {{ plot_url }}"><br><br>
+
+    It's <strong>{{ diff_days }}</strong> away until the registration closes, and right now you have <strong>{{ total }}</strong> registrants, with our current rate at <strong>{{ rate }}</strong> registrants per day.<br><br>
+
+    {% if diff_target > 0 %}
+    We're <strong>{{ diff_target }}</strong> away until we reach our target. To reach our target, our rate should be at minimum <strong>{{ target_rate }}</strong> registrants per day.
+
+    {% elif diff_target == 0 %}
+    We have just reached our target. Yay!
+
+    {% else %}
+    We are way past our target!
+    {% endif %}
+
+{% endblock %}

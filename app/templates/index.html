@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>Hello!</h1>
+    <form action="/result" method="post" name="login" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <p>
+
+        Who are you?<br>
+        {{ form.title(size=80) }}
+        {% for error in form.title.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br><br>
+
+        How many is your target?<br>
+        {{ form.target }}
+        {% for error in form.target.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br><br>
+
+        Your registration opens at:<br>
+        {{ form.registration_opens() }}<br><br>
+
+        ... and will close at:<br>
+        {{ form.registration_closes() }}<br><br>
+
+        Upload your .csv:<br>
+        {{form.myFile()}}<br>
+    </p>
+    <p><input type="submit" method="post" value="Find out my stats!"></p>
+</form>
+{% endblock %}
